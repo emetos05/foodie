@@ -3,15 +3,12 @@ import React from "react";
 import styles from "./BusinessList.module.css";
 import Business from "../Business/Business";
 
-// collection of all businesses, map over to render - for later
-// const businesses = [];
-
-const BusinessList = () => {
+const BusinessList = ({ businesses }) => {
   return (
     <div className={styles.businessList}>
-      <Business />
-      <Business />
-      <Business />
+      {businesses.map((business) => (
+        <Business business={business} key={business.name} />
+      ))}
     </div>
   );
 };
