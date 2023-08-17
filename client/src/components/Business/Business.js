@@ -11,9 +11,14 @@ const Business = ({ business }) => {
       <h2>{business.name}</h2>
       <div className={styles.info}>
         <div className={styles.address}>
-          <p>{business.address}</p>
-          <p>{business.city}</p>
-          <p>{`${business.state} ${business.zipCode}`}</p>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href={`https://www.google.com/maps/`}
+          >
+            <p>{business.address1}</p>
+            <p>{business.address2}</p>
+          </a>
         </div>
         <div className={styles.reviews}>
           <h3>{business.category}</h3>
