@@ -2,13 +2,16 @@ import axios from "axios";
 
 const getListings = async (term, location, sort) => {
   try {
-    const response = await axios.get("http://localhost:8080/api", {
-      params: {
-        term: term,
-        location: location,
-        sort: sort,
-      },
-    });
+    const response = await axios.get(
+      "http://localhost:9999/.netlify/functions/searchYelp",
+      {
+        params: {
+          term: term,
+          location: location,
+          sort: sort,
+        },
+      }
+    );
     if (response.data.businesses) {
       return response.data.businesses.map((business) => ({
         id: business.id,
@@ -23,7 +26,7 @@ const getListings = async (term, location, sort) => {
       }));
     }
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
   }
 };
 export default getListings;

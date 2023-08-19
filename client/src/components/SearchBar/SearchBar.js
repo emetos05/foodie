@@ -35,6 +35,8 @@ const SearchBar = ({ getRestaurants }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getRestaurants(term, location, sort);
+    // setTerm("");
+    // setLocation("");
   };
 
   // Render sort options list
@@ -57,24 +59,24 @@ const SearchBar = ({ getRestaurants }) => {
       </div>
       <form onSubmit={handleSubmit}>
         <div className={styles.searchBarEntry}>
-          <label htmlFor="term">
-            <input
-              id="term"
-              name="term"
-              type="text"
-              placeholder="Business Name"
-              onChange={handleTermChange}
-            ></input>
-          </label>
-          <label htmlFor="location">
-            <input
-              id="location"
-              name="location"
-              type="text"
-              placeholder="City"
-              onChange={handleLocationChange}
-            ></input>
-          </label>
+          <label htmlFor="term"></label>
+          <input
+            id="term"
+            name="term"
+            type="text"
+            placeholder="Business Name"
+            value={term}
+            onChange={handleTermChange}
+          ></input>
+          <label htmlFor="location"></label>
+          <input
+            id="location"
+            name="location"
+            type="text"
+            placeholder="City"
+            value={location}
+            onChange={handleLocationChange}
+          ></input>
         </div>
         <div className={styles.searchBarSubmit}>
           <button type="submit">Get Restaurants</button>

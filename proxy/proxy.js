@@ -16,15 +16,16 @@ const options = {
   },
 };
 
-app.get("/api", (req, res) => {
+app.get("/api", async (req, res) => {
   const { term, location, sort } = req.query;
-  fetch(
-    `https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sort}&limit=20`,
-    options
-  )
-    .then((res) => res.json())
-    .then((response) => res.send(response))
-    .catch((err) => console.error("error:" + err));
+  const url = `https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sort}&limit=20`;
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    res.status(200).send(data);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
