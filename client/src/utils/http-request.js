@@ -26,7 +26,7 @@ const getListings = async (term, location, sort) => {
       }));
     }
   } catch (error) {
-    console.error(error.message);
+    console.error({ message: "Bad request" }, error.message);
   }
 };
 export default getListings;
