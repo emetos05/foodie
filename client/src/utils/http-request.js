@@ -1,17 +1,16 @@
 import axios from "axios";
 
+const url = "http://localhost:9999/.netlify/functions/searchYelp";
+
 const getListings = async (term, location, sort) => {
   try {
-    const response = await axios.get(
-      "http://localhost:9999/.netlify/functions/searchYelp",
-      {
-        params: {
-          term: term,
-          location: location,
-          sort: sort,
-        },
-      }
-    );
+    const response = await axios.get(url, {
+      params: {
+        term: term,
+        location: location,
+        sort: sort,
+      },
+    });
     if (response.data.businesses) {
       return response.data.businesses.map((business) => ({
         id: business.id,
