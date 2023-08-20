@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:9999/.netlify/functions/searchYelp";
+const url = "https://localefoodie.netlify.app/.netlify/functions/searchYelp";
 
 const getListings = async (term, location, sort) => {
   try {
