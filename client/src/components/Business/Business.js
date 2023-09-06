@@ -14,7 +14,7 @@ const Business = ({ business }) => {
           <a
             target="_blank"
             rel="noreferrer"
-            href={`https://www.google.com/maps/`}
+            href={`https://www.google.com/maps/search/?api=1&query=${business.lat},${business.long}`}
           >
             <p>{business.address1}</p>
             <p>{business.address2}</p>
